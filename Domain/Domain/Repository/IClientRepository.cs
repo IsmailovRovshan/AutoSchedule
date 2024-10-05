@@ -4,10 +4,10 @@ namespace Domain.Repository
 {
     public interface IClientRepository
     {
-        Task<Client> GetClientByIdAsync(Guid id);
-        Task<IEnumerable<Client>> GetAllClientsAsync();
-        Task InsertClientAsync(Client client);
-        Task UpdateClientAsync(Client client);
-        Task DeleteClientAsync(Guid id);
+        Task<Client> GetByIdAsync(Guid id);
+        Task<IEnumerable<Client>> GetAllAsync();
+        Task AddAsync(Client client);
+        Task UpdateAsync(Client client);
+        Task DeleteAsync(Guid id);
     }
 }

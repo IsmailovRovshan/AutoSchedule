@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Domain.Entities.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,10 @@ namespace Domain.Repository
 {
     public interface ITeacherRepository
     {
-        Task<Teacher> GetTeacherByIdAsync(Guid id);
-        Task<IEnumerable<Teacher>> GetAllTeachersAsync();
-        Task InsertTeacherAsync(Teacher teacher);
-        Task UpdateTeacherAsync(Teacher teacher);
-        Task DeleteTeacherAsync(Guid id);
+        Task<Teacher> GetByIdAsync(Guid id);
+        Task<IEnumerable<Teacher>> GetAllAsync();
+        Task AddAsync(Teacher teacher);
+        Task UpdateAsync(Teacher teacher);
+        Task DeleteAsync(Guid id);
     }
 }

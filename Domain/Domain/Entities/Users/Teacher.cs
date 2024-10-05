@@ -1,6 +1,6 @@
-﻿namespace Domain.Entities
+﻿namespace Domain.Entities.Users
 {
-    public class Teacher
+    public class Teacher : IUser
     {
         public Guid Id { get; set; }
         public string Login { get; set; } = string.Empty;
