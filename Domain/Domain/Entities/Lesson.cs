@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Entities.Users;
+﻿using Domain.Entities.Users;
+using Domain.Enum;
 
 namespace Domain.Entities
 {
@@ -12,11 +8,13 @@ namespace Domain.Entities
         public int TeacherId {  get; set; }
         public Teacher? Teacher { get; set; }
 
-        public bool IsCompleted { get; set; }
+        public Status Status { get; set; } = Status.Scheduled;
 
         public Guid ClientId { get; set; }
         public Client? Client { get; set; }
 
         public DateTime LessonDate { get; set; } = DateTime.Now;
     }
+
+    
 }

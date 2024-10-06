@@ -5,9 +5,9 @@ namespace Domain.Repository
     public interface IClientRepository
     {
         Task<Client> GetByIdAsync(Guid id);
-        Task<IEnumerable<Client>> GetAllAsync();
+        Task<List<Client>> GetAllAsync();
         Task AddAsync(Client client);
         Task UpdateAsync(Client client);
-        Task DeleteAsync(Guid id);
+        Task DeleteAsync(Client client);
     }
 }

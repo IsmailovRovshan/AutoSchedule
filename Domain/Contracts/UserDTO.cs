@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Contracts
+﻿namespace Contracts
 {
-    public record UserCreateDTO(string FullName, string Login, string Password, string Email);
-    public record UserLoginDTO(string Login, string Password);
+    public record CreateUserDTO(string FullName, string Login, string Password, string Email);
+    public record LoginUserDTO(string Login, string Password);
 }

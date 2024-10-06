@@ -5,9 +5,9 @@ namespace Domain.Repository
     public interface IManagerRepository
     {
         Task<Manager> GetByIdAsync(Guid id);
-        Task<IEnumerable<Manager>> GetAllAsync();
+        Task<List<Manager>> GetAllAsync();
         Task AddAsync(Manager manager);
         Task UpdateAsync(Manager manager);
-        Task DeleteAsync(Guid id);
+        Task DeleteAsync(Manager manager);
     }
 }

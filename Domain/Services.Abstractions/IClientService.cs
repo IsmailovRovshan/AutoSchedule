@@ -1,18 +1,14 @@
-﻿using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Contracts;
 
 namespace Services.Abstractions
 {
     public interface IClientService
     {
-        Task CreateClientAsync(Guid managerId, Client client);
-        Task<Client> GetClientByIdAsync(Guid id);
-        Task<IEnumerable<Client>> GetAllClientsAsync();
-        Task UpdateClientAsync(Client client);
-        Task DeleteClientAsync(Guid id);
+        
+        Task<ClientDTO> GetByIdAsync(Guid id);
+        Task<List<ClientDTO>> GetAllAsync();
+        Task<ClientDTO> CreateAsync(Guid managerId, ClientDTO client);
+        Task UpdateAsync(ClientDTO client);
+        Task DeleteAsync(Guid id);
     }
 }
