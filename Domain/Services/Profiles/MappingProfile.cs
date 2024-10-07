@@ -8,8 +8,8 @@ namespace Services.Profiles
     public class MappingProfile : Profile
     {
         public MappingProfile() {
-            CreateMap<Client,ClientDTO>().ReverseMap();
-            CreateMap<Teacher,TeacherDTO>().ReverseMap();
+            CreateMap<Client,ClientDto>().ReverseMap();
+            CreateMap<Teacher,TeacherDto>().ReverseMap();
         }
     }
 }

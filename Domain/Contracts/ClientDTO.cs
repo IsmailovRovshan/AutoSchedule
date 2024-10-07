@@ -1,4 +1,4 @@
 ﻿namespace Contracts
 {
-    public record ClientDTO(Guid Id, string FullName, int Age);
+    public record ClientDto(Guid Id, string FullName, int Age);
 }

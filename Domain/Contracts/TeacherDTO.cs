@@ -1,4 +1,6 @@
 ﻿namespace Contracts
 {
-    public record TeacherDTO(Guid Id, string FullName, string Email, DateTime StartWork, DateTime EndWork);
+    public record TeacherDto(Guid Id, string Login, string Password, string FullName, DateTime StartWork, DateTime EndWork);
+    public record TeacherDtoForCreate(string Login, string Password, string FullName, DateTime StartWork, DateTime EndWork);
+    public record TeacherDtoForUpdate(string Email, DateTime StartWork, DateTime EndWork);
 }

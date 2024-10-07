@@ -1,4 +1,6 @@
 ﻿namespace Contracts
 {
-    public record ManagerDTO(Guid Id, string FullName);
+    public record ManagerDto(Guid Id, string Login,string Password, string FullName, string Email);
+    public record ManagerDtoForCreate(string Login,string Password, string FullName, string Email);
+    public record ManagerDtoForUpdate(string Email);
 }
