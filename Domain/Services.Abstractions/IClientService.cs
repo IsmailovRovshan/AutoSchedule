@@ -4,11 +4,10 @@ namespace Services.Abstractions
 {
     public interface IClientService
     {
-        
-        Task<ClientDTO> GetByIdAsync(Guid id);
-        Task<List<ClientDTO>> GetAllAsync();
-        Task<ClientDTO> CreateAsync(Guid managerId, ClientDTO client);
-        Task UpdateAsync(ClientDTO client);
-        Task DeleteAsync(Guid id);
+        Task<ClientDto> GetByIdAsync(Guid id);
+        Task<List<ClientDto>> GetAllAsync();
+        Task<ClientDto> CreateAsync(ClientDtoForCreate clientDto);
+        Task UpdateAsync(Guid clientId, ClientDtoForUpdate client);
+        Task DeleteAsync(Guid clientId);
     }
 }

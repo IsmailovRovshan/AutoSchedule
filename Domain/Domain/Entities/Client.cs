@@ -8,6 +8,6 @@ namespace Domain.Entities
         public string FullName { get; set; } = string.Empty;
         public int Age { get; set; } 
         public Guid ManagerId { get; set; } 
-        public Manager Manager { get; set; }
+        public Manager? Manager { get; set; }
     }
 }

@@ -4,9 +4,10 @@ namespace Services.Abstractions
 {
     public interface IManagerService
     {
-        Task<ClientDTO> CreateClientAsync(ClientDTO clientDto);
-        Task UpdateClientAsync(ClientDTO clientDto);
-        Task DeleteClientAsync(Guid ClientId);
-        Task AutoSearchTeacherForClient(Guid clientId, DateTime lessonDate);
+        Task<ManagerDto> GetByIdAsync(Guid id);
+        Task<List<ManagerDto>> GetAllAsync();
+        Task<ManagerDto> CreateAsync(ManagerDtoForCreate managerDto);
+        Task UpdateAsync(Guid managerId, ManagerDtoForUpdate manager);
+        Task DeleteAsync(Guid managerId);
     }
 }

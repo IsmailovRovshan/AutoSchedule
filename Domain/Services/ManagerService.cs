@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contracts;
 using Domain.Entities;
+using Domain.Entities.Users;
 using Domain.Repository;
 using Services.Abstractions;
 
@@ -8,49 +9,72 @@ namespace Services
 {
     public class ManagerService : IManagerService
     {
-        private readonly IClientRepository _clientRepository;
+        private readonly IManagerRepository _managerRepository;
         private readonly ITeacherRepository _teacherRepository;
         private readonly ILessonRepository _lessonRepository;
 
         private readonly IMapper _mapper;
 
         public ManagerService
-            (IClientRepository clientRepository, 
+            (IManagerRepository managerRepository, 
             ITeacherRepository teacherRepository, 
             ILessonRepository lessonRepository,
             IMapper mapper)
         {
-            _clientRepository = clientRepository;
+            _managerRepository = managerRepository;
             _teacherRepository = teacherRepository;
             _lessonRepository = lessonRepository;
             _mapper = mapper;
         }
-        public async Task<ClientDTO> CreateClientAsync(ClientDTO clientDto)
+
+        public async Task<ManagerDto> CreateAsync(ManagerDtoForCreate managerDto)
         {
-            var client = _mapper.Map<Client>(clientDto);
-            await _clientRepository.AddAsync(client);
-            return _mapper.Map<ClientDTO>(client);
+            var manager = _mapper.Map<Manager>(managerDto);
+            await _managerRepository.AddAsync(manager);
+            return _mapper.Map<ManagerDto>(manager);
         }
 
-        public Task AutoSearchTeacherForClient(Guid clientId, DateTime lessonDate)
+        public async Task DeleteAsync(Guid managerId)
         {
-            throw new NotImplementedException();
-        }
+            var manager = await _managerRepository.GetByIdAsync(managerId);
 
-        public async Task DeleteClientAsync(Guid clientId)
-        {
-            var client = await _clientRepository.GetByIdAsync(clientId);
-            if (client == null)
+            if (manager == null)
             {
-                throw new KeyNotFoundException("Client not found.");
+                throw new ArgumentException("Менеджер не найден.");
             }
 
-            await _clientRepository.DeleteAsync(client);
+            await _managerRepository.DeleteAsync(manager);
         }
 
-        public Task UpdateClientAsync(ClientDTO clientDto)
+        public Task<List<ManagerDto>> GetAllAsync()
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<ManagerDto> GetByIdAsync(Guid id)
+        {
+            var manager = await _managerRepository.GetByIdAsync(id);
+
+            if (manager == null)
+            {
+                throw new ArgumentException("Менеджер не найден.");
+            }
+
+            return _mapper.Map<ManagerDto>(manager);
+        }
+
+        public async Task UpdateAsync(Guid managerId, ManagerDtoForUpdate managerDto)
+        {
+            var existingManager = await _managerRepository.GetByIdAsync(managerId);
+
+            if (existingManager == null)
+            {
+                throw new ArgumentException("Менеджер не найден.");
+            }
+
+            _mapper.Map(managerDto, existingManager);
+
+            await _managerRepository.UpdateAsync(existingManager);
         }
     }
 }
