@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Contracts;
-using Domain.Entities;
 using Domain.Entities.Users;
 using Domain.Repository;
 using Services.Abstractions;
@@ -46,9 +45,11 @@ namespace Services
             await _managerRepository.DeleteAsync(manager);
         }
 
-        public Task<List<ManagerDto>> GetAllAsync()
+        public async Task<List<ManagerDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var managers = await _managerRepository.GetAllAsync();
+
+            return _mapper.Map<List<ManagerDto>>(managers);
         }
 
         public async Task<ManagerDto> GetByIdAsync(Guid id)

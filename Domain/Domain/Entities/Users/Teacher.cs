@@ -10,5 +10,7 @@
 
         public DateTime StartWork { get; set; } = DateTime.Now;
         public DateTime EndWork { get; set; } = DateTime.Now;
+
+        public List<Lesson> Lessons { get; set; } = new List<Lesson>();
     }
 }
