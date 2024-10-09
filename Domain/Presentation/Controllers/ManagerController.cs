@@ -14,14 +14,14 @@ public class ManagerController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAllAsync()
     {
         var managers = await _managerService.GetAllAsync();
         return Ok(managers);
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(Guid id)
+    public async Task<IActionResult> GetByIdAsync(Guid id)
     {
         try
         {
@@ -35,7 +35,7 @@ public class ManagerController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] ManagerDtoForCreate managerDto)
+    public async Task<IActionResult> CreateAsync([FromBody] ManagerDtoForCreate managerDto)
     {
         if (!ModelState.IsValid)
         {
@@ -43,7 +43,7 @@ public class ManagerController : ControllerBase
         }
 
         var manager = await _managerService.CreateAsync(managerDto);
-        return CreatedAtAction(nameof(GetById), new { id = manager.Id }, manager);
+        return CreatedAtAction(nameof(GetByIdAsync), new { id = manager.Id }, manager);
     }
 
     [HttpPut("{id}")]

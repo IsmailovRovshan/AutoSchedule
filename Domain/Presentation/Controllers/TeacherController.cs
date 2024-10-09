@@ -1,53 +1,54 @@
 ﻿using Contracts;
+using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Services.Abstractions;
 
 namespace Presentation.Controllers
 {
     [ApiController]
-    [Route("api/clients")]
-    public class ClientController : ControllerBase
+    [Route("api/teachers")]
+    public class TeacherController : ControllerBase
     {
-        private readonly IClientService _clientService;
-
-        public ClientController(IClientService clientService)
+        private readonly ITeacherService _teacherService;
+        public TeacherController(ITeacherService teacherService)
         {
-            _clientService = clientService;
+            _teacherService = teacherService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
-            var clients = await _clientService.GetAllAsync();
-            return Ok(clients);
+            var teachers = await _teacherService.GetAllAsync();
+            return Ok(teachers);
         }
 
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetByIdAsync(Guid id)
         {
-            var client = await _clientService.GetByIdAsync(id);
-            if (client == null)
+            var teacher = await _teacherService.GetByIdAsync(id);
+
+            if(teacher == null)
             {
-                return NotFound("Клиент не найден.");
+                return NotFound("Преподаватель не найден.");
             }
 
-            return Ok(client);
+            return Ok(teacher);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync([FromBody] ClientDtoForCreate clientDto)
+        public async Task<IActionResult> CreateAsync([FromBody] TeacherDtoForCreate teacherDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var newClient = await _clientService.CreateAsync(clientDto);
-            return Ok(newClient);
+            var newTeacher = await _teacherService.CreateAsync(teacherDto); 
+            return Ok(newTeacher);
         }
 
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> UpdateAsync(Guid id, [FromBody] ClientDtoForUpdate clientDto)
+        public async Task<IActionResult> UpdateAsync(Guid id, [FromBody] TeacherDtoForUpdate teacherDto)
         {
             if (!ModelState.IsValid)
             {
@@ -56,7 +57,7 @@ namespace Presentation.Controllers
 
             try
             {
-                await _clientService.UpdateAsync(id, clientDto);
+                await _teacherService.UpdateAsync(id, teacherDto);
             }
             catch (KeyNotFoundException)
             {
@@ -71,7 +72,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                await _clientService.DeleteAsync(id);
+                await _teacherService.DeleteAsync(id);
             }
             catch (KeyNotFoundException)
             {

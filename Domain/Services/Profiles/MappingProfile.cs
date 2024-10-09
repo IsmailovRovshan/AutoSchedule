@@ -20,6 +20,11 @@ namespace Services.Profiles
             CreateMap<Manager, ManagerDto>().ReverseMap();
             CreateMap<Manager, ManagerDtoForCreate>().ReverseMap();
             CreateMap<Manager, ManagerDtoForUpdate>().ReverseMap();
+
+            CreateMap<Lesson, LessonDto>().ReverseMap();
+            CreateMap<Lesson, LessonDtoForCreate>().ReverseMap();
+            CreateMap<Lesson, LessonDtoForUpdate>().ReverseMap();
+
         }
     }
 }

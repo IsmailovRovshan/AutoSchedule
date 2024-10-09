@@ -79,8 +79,87 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Presentation.Controllers.LessonController",
+    "Method": "GetAllAsync",
+    "RelativePath": "api/lessons",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controllers.LessonController",
+    "Method": "CreateAsync",
+    "RelativePath": "api/lessons",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lessonDto",
+        "Type": "Contracts.LessonDtoForCreate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controllers.LessonController",
+    "Method": "GetByIdAsync",
+    "RelativePath": "api/lessons/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controllers.LessonController",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/lessons/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "lessonDto",
+        "Type": "Contracts.LessonDtoForUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controllers.LessonController",
+    "Method": "DeleteAsync",
+    "RelativePath": "api/lessons/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ManagerController",
-    "Method": "GetAll",
+    "Method": "GetAllAsync",
     "RelativePath": "api/managers",
     "HttpMethod": "GET",
     "IsController": true,
@@ -90,7 +169,7 @@
   },
   {
     "ContainingType": "ManagerController",
-    "Method": "Create",
+    "Method": "CreateAsync",
     "RelativePath": "api/managers",
     "HttpMethod": "POST",
     "IsController": true,
@@ -106,7 +185,7 @@
   },
   {
     "ContainingType": "ManagerController",
-    "Method": "GetById",
+    "Method": "GetByIdAsync",
     "RelativePath": "api/managers/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -145,6 +224,85 @@
     "ContainingType": "ManagerController",
     "Method": "Delete",
     "RelativePath": "api/managers/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controllers.TeacherController",
+    "Method": "GetAllAsync",
+    "RelativePath": "api/teachers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controllers.TeacherController",
+    "Method": "CreateAsync",
+    "RelativePath": "api/teachers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "teacherDto",
+        "Type": "Contracts.TeacherDtoForCreate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controllers.TeacherController",
+    "Method": "GetByIdAsync",
+    "RelativePath": "api/teachers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controllers.TeacherController",
+    "Method": "UpdateAsync",
+    "RelativePath": "api/teachers/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "teacherDto",
+        "Type": "Contracts.TeacherDtoForUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controllers.TeacherController",
+    "Method": "DeleteAsync",
+    "RelativePath": "api/teachers/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
