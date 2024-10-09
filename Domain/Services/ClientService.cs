@@ -3,11 +3,7 @@ using Contracts;
 using Domain.Entities;
 using Domain.Repository;
 using Services.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Services
 {
@@ -21,13 +17,9 @@ namespace Services
 
         public ClientService
             (IClientRepository clientRepository,
-            ITeacherRepository teacherRepository,
-            ILessonRepository lessonRepository,
             IMapper mapper)
         {
             _clientRepository = clientRepository;
-            _teacherRepository = teacherRepository;
-            _lessonRepository = lessonRepository;
             _mapper = mapper;
         }
 

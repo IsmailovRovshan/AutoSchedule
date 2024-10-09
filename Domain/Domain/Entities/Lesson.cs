@@ -5,7 +5,7 @@ namespace Domain.Entities
 {
     public class Lesson
     {
-        public int TeacherId {  get; set; }
+        public Guid TeacherId {  get; set; }
         public Teacher? Teacher { get; set; }
 
         public Guid ClientId { get; set; }
