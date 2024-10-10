@@ -36,6 +36,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.ApplyMigrations();
 }
 
 app.UseHttpsRedirection();
@@ -45,3 +46,13 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public static class ApplicationBuilderExtensions
+{
+    public static void ApplyMigrations(this IApplicationBuilder builder)
+    {
+        using var scope = builder.ApplicationServices.CreateScope();
+        using RepositoryDbContext dbContext = scope.ServiceProvider.GetRequiredService<RepositoryDbContext>();
+        dbContext.Database.MigrateAsync().GetAwaiter().GetResult();
+    }
+}

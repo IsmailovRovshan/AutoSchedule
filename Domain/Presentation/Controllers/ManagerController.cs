@@ -43,7 +43,7 @@ public class ManagerController : ControllerBase
         }
 
         var manager = await _managerService.CreateAsync(managerDto);
-        return CreatedAtAction(nameof(GetByIdAsync), new { id = manager.Id }, manager);
+        return Ok(manager);
     }
 
     [HttpPut("{id}")]
