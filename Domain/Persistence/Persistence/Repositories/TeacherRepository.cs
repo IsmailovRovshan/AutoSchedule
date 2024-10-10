@@ -47,5 +47,14 @@ namespace Persistence.Repositories
             _dbContext.Teachers.Update(teacher);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<List<Teacher>> TeachersCanWorkAtThisTime(DateTime time)
+        {
+            return await _dbContext.Teachers
+                .Where(t => time >= t.StartWork && 
+                 time <= t.EndWork)
+                .ToListAsync();
+        }
+        
     }
 }

@@ -1,4 +1,6 @@
-﻿using Domain.Entities.Users;
+﻿using Domain.Entities;
+using Domain.Entities.Users;
+using System.Data;
 
 namespace Domain.Repository
 {
@@ -9,5 +11,7 @@ namespace Domain.Repository
         Task AddAsync(Teacher teacher);
         Task UpdateAsync(Teacher teacher);
         Task DeleteAsync(Teacher teacher);
+
+        Task<List<Teacher>> TeachersCanWorkAtThisTime(DateTime lessonDate);
     }
 }

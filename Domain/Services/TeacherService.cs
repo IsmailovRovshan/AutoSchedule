@@ -10,16 +10,28 @@ namespace Services
     public class TeacherService : ITeacherService
     {
         private readonly ITeacherRepository _teacherRepository;
+        private readonly ILessonRepository _lessonRepository;
         private readonly IMapper _mapper;
 
-        public TeacherService(ITeacherRepository teacherRepository, IMapper mapper)
+        public TeacherService(ITeacherRepository teacherRepository, ILessonRepository lessonRepository, IMapper mapper)
         {
             _teacherRepository = teacherRepository;
+            _lessonRepository = lessonRepository;
             _mapper = mapper;
         }
 
         public async Task<TeacherDto> CreateAsync(TeacherDtoForCreate teacherDto)
         {
+            if (teacherDto.StartWork.Minute != 0 || teacherDto.StartWork.Second != 0
+                || teacherDto.EndWork.Minute != 0 || teacherDto.EndWork.Second != 0
+                )
+            {
+                throw new Exception("Неправильный формат времени");
+            }
+
+            
+
+
             var teacher = _mapper.Map<Teacher>(teacherDto);
             await _teacherRepository.AddAsync(teacher);
             return _mapper.Map<TeacherDto>(teacher);
@@ -52,7 +64,7 @@ namespace Services
                 throw new KeyNotFoundException("Teacher not found");
             }
 
-            _mapper.Map(teacherDto, teacher); // Преобразование данных DTO в сущность
+            _mapper.Map(teacherDto, teacher);
             await _teacherRepository.UpdateAsync(teacher);
         }
 
@@ -66,12 +78,6 @@ namespace Services
             }
 
             await _teacherRepository.DeleteAsync(teacher);
-        }
-
-        public async Task<TeacherDto> AutoAssignTeacherToClientAsync(Guid clientId, DateTime lessonTime)
-        {
-            // Логика поиска подходящего преподавателя
-            throw new NotImplementedException();
         }
     }
 

@@ -4,10 +4,14 @@ namespace Services.Abstractions
 {
     public interface ILessonService
     {
-        Task<LessonDto> GetByIdAsync(Guid Id); 
+        Task<LessonDto> GetByIdAsync(Guid TeacherId, Guid ClientId); 
         Task<List<LessonDto>> GetAllAsync(); 
         Task<LessonDto> CreateAsync(LessonDtoForCreate lessonDto); 
-        Task UpdateAsync(Guid lessonId, LessonDtoForUpdate lessonDto); 
-        Task DeleteAsync(Guid lessonId); 
+        Task UpdateAsync(Guid TeacherId, Guid ClientId, LessonDtoForUpdate lessonDto); 
+        Task DeleteAsync(Guid TeacherId, Guid ClientId);
+
+        Task<List<LessonDto>> GetLessonsByDateAsync(Guid teacherId, DateTime date);
+        Task<LessonDto> CreateAuto(LessonDtoForAutoCreate lessonDto);
+
     }
 }

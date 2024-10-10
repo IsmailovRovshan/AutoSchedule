@@ -9,7 +9,5 @@ namespace Services.Abstractions
         Task<TeacherDto> CreateAsync(TeacherDtoForCreate teacherDto);
         Task UpdateAsync(Guid teacherId, TeacherDtoForUpdate teacher);
         Task DeleteAsync(Guid teacherId);
-
-        Task<TeacherDto> AutoAssignTeacherToClientAsync(Guid clientId, DateTime lessonTime);
     }
 }

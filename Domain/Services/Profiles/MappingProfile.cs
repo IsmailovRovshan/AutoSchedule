@@ -24,6 +24,7 @@ namespace Services.Profiles
             CreateMap<Lesson, LessonDto>().ReverseMap();
             CreateMap<Lesson, LessonDtoForCreate>().ReverseMap();
             CreateMap<Lesson, LessonDtoForUpdate>().ReverseMap();
+            CreateMap<Lesson, LessonDtoForAutoCreate>().ReverseMap();
 
         }
     }

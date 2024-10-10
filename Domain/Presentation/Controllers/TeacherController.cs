@@ -73,10 +73,11 @@ namespace Presentation.Controllers
             try
             {
                 await _teacherService.DeleteAsync(id);
+                Ok();
             }
             catch (KeyNotFoundException)
             {
-                return NotFound("Клиент не найден.");
+                return NotFound("не найден.");
             }
 
             return NoContent();
